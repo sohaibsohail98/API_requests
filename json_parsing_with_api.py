@@ -33,7 +33,29 @@ for key in json_data:
 
 print(json_data)
 
+# Exercise is to fetch data by key value pairs within dictionaries
+# Create a function to return the above values (Key:value)
+# Create a class and move the code inside the class
+json_data = post_codes_req.json()
+
+class get_json:
+    #this method retrieves all the values
+    def get_all_values(self, nested_dictionary):
+        #for loop goes through the key:value pairs
+        for key, value in nested_dictionary.items(): #.items retrieves all the key values pairs if there is a nested dictionary
+            if type(value) is dict:   # if the value of a key is a dictionary, then you have found a nested dictionary
+                self.get_all_values(value) # recall this method passing in that dictionary to iterate through it
+            else:
+                print(key, ":", value) # if the value of the dictionary is not a dict carry on looping through
 
 
-for list in key[0:6]:
-    print(list)
+json_reader = get_json() # Create instance of this function
+json_reader.get_all_values(json_data)  # Returns all the values inside a dictionary including any nested dictionaries
+
+
+
+
+
+
+
+
